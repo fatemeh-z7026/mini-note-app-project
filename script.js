@@ -67,7 +67,7 @@ function createElement() {
   if (inputField.value) {
     let newNoteElem = $.createElement("div");
     newNoteElem.setAttribute("class", "card shadow-sm rounded");
-
+    newNoteElem.addEventListener("click", removeNote);
     let newNoteP = $.createElement("p");
     newNoteP.setAttribute("class", "card-text p-3");
     newNoteP.innerHTML = inputField.value;
@@ -81,6 +81,10 @@ function createElement() {
   }
 }
 
+function removeNote(event) {
+  event.target.parentElement.remove();
+}
+
 //Activate Enter Key
 inputField.addEventListener("keydown", function (event) {
   if (event.keyCode === 13) {
@@ -89,3 +93,6 @@ inputField.addEventListener("keydown", function (event) {
 });
 
 saveBtn.addEventListener("click", createElement);
+deleteBtn.addEventListener("click", function () {
+  inputField.value = "";
+});
