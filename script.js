@@ -58,6 +58,9 @@ colorBox.forEach((item) => {
   colorElem.setAttribute("class", "color-box");
   colorElem.style.backgroundColor = item.color;
   colorSelectElem.append(colorElem);
+  colorElem.addEventListener("click", function () {
+    inputField.style.backgroundColor = item.color;
+  });
 });
 
 //Create Note List
@@ -67,6 +70,7 @@ function createElement() {
   if (inputField.value) {
     let newNoteElem = $.createElement("div");
     newNoteElem.setAttribute("class", "card shadow-sm rounded");
+    newNoteElem.style.backgroundColor = inputField.style.backgroundColor;
     newNoteElem.addEventListener("click", removeNote);
     let newNoteP = $.createElement("p");
     newNoteP.setAttribute("class", "card-text p-3");
@@ -76,11 +80,14 @@ function createElement() {
     listElem.append(newNoteElem);
 
     inputField.value = "";
+    inputField.style.backgroundColor = "#FFF";
   } else {
     alert("Please Insert Note");
+    inputField.style.backgroundColor = "#FFF";
   }
 }
 
+//Remove Note
 function removeNote(event) {
   event.target.parentElement.remove();
 }
@@ -94,5 +101,6 @@ inputField.addEventListener("keydown", function (event) {
 
 saveBtn.addEventListener("click", createElement);
 deleteBtn.addEventListener("click", function () {
+  inputField.style.backgroundColor = "#FFF";
   inputField.value = "";
 });
