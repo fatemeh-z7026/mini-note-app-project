@@ -60,6 +60,7 @@ colorBox.forEach((item) => {
   colorSelectElem.append(colorElem);
   colorElem.addEventListener("click", function () {
     inputField.style.backgroundColor = item.color;
+    inputField.focus();
   });
 });
 
