@@ -52,10 +52,23 @@ let colorBox = [
   },
 ];
 
-//Create Color Box 
+//Create Color Box
 colorBox.forEach((item) => {
   let colorElem = $.createElement("div");
   colorElem.setAttribute("class", "color-box");
   colorElem.style.backgroundColor = item.color;
   colorSelectElem.append(colorElem);
 });
+
+//Create Note List
+
+function createElement() {
+  let newNoteElem = $.createElement("div");
+  newNoteElem.setAttribute("class", "card shadow-sm rounded");
+
+  let newNoteP = $.createElement("p");
+  newNoteP.setAttribute("class", "card-text p-3");
+
+  newNoteElem.append(newNoteP);
+  listElem.append(newNoteElem);
+}
