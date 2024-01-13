@@ -63,12 +63,29 @@ colorBox.forEach((item) => {
 //Create Note List
 
 function createElement() {
-  let newNoteElem = $.createElement("div");
-  newNoteElem.setAttribute("class", "card shadow-sm rounded");
+  //Check If Input has value Invoke CreatElement Function
+  if (inputField.value) {
+    let newNoteElem = $.createElement("div");
+    newNoteElem.setAttribute("class", "card shadow-sm rounded");
 
-  let newNoteP = $.createElement("p");
-  newNoteP.setAttribute("class", "card-text p-3");
+    let newNoteP = $.createElement("p");
+    newNoteP.setAttribute("class", "card-text p-3");
+    newNoteP.innerHTML = inputField.value;
 
-  newNoteElem.append(newNoteP);
-  listElem.append(newNoteElem);
+    newNoteElem.append(newNoteP);
+    listElem.append(newNoteElem);
+
+    inputField.value = "";
+  } else {
+    alert("Please Insert Note");
+  }
 }
+
+//Activate Enter Key
+inputField.addEventListener("keydown", function (event) {
+  if (event.keyCode === 13) {
+    createElement();
+  }
+});
+
+saveBtn.addEventListener("click", createElement);
